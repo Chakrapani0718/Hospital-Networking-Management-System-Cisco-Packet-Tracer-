@@ -419,7 +419,7 @@ Example: PC0 (192.168.1.2, floor-3) ↔ PC3 (192.168.6.3, floor-1) → Success
 
 Conclusion: Inter-VLAN routing via Router1 and OSPF is configured correctly.
 <br>
-Output:
+Output:<img width="1765" height="623" alt="Image" src="https://github.com/user-attachments/assets/96510cfe-acc6-4b06-b88e-80db3c9886dc" />
 
 2. DHCP Verification
 
