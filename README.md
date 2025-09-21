@@ -244,7 +244,7 @@ ip ssh version 2
 line vty 0 4
  transport input ssh
  login local<br>
- Router Two Output:
+ Router Two Output:<img width="988" height="614" alt="Image" src="https://github.com/user-attachments/assets/ec4b84ad-2b26-40ac-9bff-5a435e6b8489" />
  <br>
 Switch2 Configuration
 hostname Switch2
