@@ -395,6 +395,8 @@ interface fa0/5
  switchport mode access
  switchport access vlan 20
  <br>
+
+ Switch Three Output:<img width="908" height="565" alt="Image" src="https://github.com/user-attachments/assets/e1efd5c8-0c0a-4d2f-b763-39c74dcfb775" />
  
 
 
