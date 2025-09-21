@@ -153,9 +153,7 @@ Switch One Output:<img width="954" height="641" alt="Image" src="https://github.
 
 # Second-Floor  <br>
 <img width="769" height="358" alt="Image" src="https://github.com/user-attachments/assets/a006d27f-cff2-444a-bbd1-fb99145bf087" />
-
-
-Router2 Configuration<br>
+<br>
 
 Devices Used:
 
@@ -291,6 +289,86 @@ interface fa0/8
  Switch Two Output:<img width="891" height="595" alt="Image" src="https://github.com/user-attachments/assets/3e7c8835-3ffb-4dde-96ca-136cfd0c5ba0" />
 
 # Third-Floor  <br>
+<img width="799" height="308" alt="Image" src="https://github.com/user-attachments/assets/3533bff2-3684-4ef0-a492-1ee0b5dde528" />
+
+<br>
+# Devices Used:
+End Devices:
+
+2 PCs (PC0, PC1)
+
+2 Printers (Printer0, Printer1)
+
+1 Laptop (Laptop2)
+
+1 Smartphone (Smartphone1)
+
+Networking Devices:
+
+1 Switch (2960-24TT)
+
+1 Access Point (Access Point6)
+
+Router (connected via Fa0/1 to switch)
+
+VLANs Configured:
+
+VLAN 10 → 192.168.1.0/24 (PC0 + Printer0)
+
+VLAN 20 → 192.168.2.0/24 (PC1 + Printer1)
+
+# Complete Configuration  <br>
+Router 3 Configuration
+
+hostname Router3
+!
+ip dhcp pool VLAN10
+ network 192.168.1.0 255.255.255.0
+ default-router 192.168.1.1
+ dns-server 8.8.8.8
+!
+ip dhcp pool VLAN20
+ network 192.168.2.0 255.255.255.0
+ default-router 192.168.2.1
+ dns-server 8.8.8.8
+!
+interface g0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.1.1 255.255.255.0
+!
+interface g0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.2.1 255.255.255.0
+!
+interface s0/3/0
+ ip address 10.10.10.2 255.255.255.252
+ clock rate 64000
+ no shutdown
+!
+interface s0/3/1
+ ip address 10.10.10.6 255.255.255.252
+ no shutdown
+!
+router ospf 10
+ network 192.168.1.0 0.0.0.255 area 0
+ network 192.168.2.0 0.0.0.255 area 0
+ network 10.10.10.0 0.0.0.3 area 0
+ network 10.10.10.4 0.0.0.3 area 0
+!
+username mani secret cisco123
+ip domain-name hospital.local
+crypto key generate rsa
+ip ssh version 2
+line vty 0 4
+ transport input ssh
+ login local
+
+<br>
+
+
+
+
+
 
 
 
