@@ -398,7 +398,136 @@ interface fa0/5
 
  Switch Three Output:<img width="908" height="565" alt="Image" src="https://github.com/user-attachments/assets/e1efd5c8-0c0a-4d2f-b763-39c74dcfb775" />
  
+Testing & Verification
+1. Inter-VLAN Connectivity Verification
 
+Objective: Ensure devices in different VLANs can communicate across routers.
+
+Tests performed:
+
+Ping between PCs in the same VLAN
+
+Example: PC6 (192.168.7.6) ↔ Printer6 (192.168.7.7) → Success
+
+Ping between PCs in different VLANs
+
+Example: PC3 (192.168.6.3) ↔ PC7 (192.168.8.7) → Success
+
+Ping between floors
+
+Example: PC0 (192.168.1.2, floor-3) ↔ PC3 (192.168.6.3, floor-1) → Success
+
+Conclusion: Inter-VLAN routing via Router1 and OSPF is configured correctly.
+<br>
+Output:
+
+2. DHCP Verification
+
+Objective: Confirm automatic IP address assignment for devices in VLANs.
+
+Tests performed:
+
+PCs and printers on each VLAN
+
+VLAN60 (192.168.6.0/24) → assigned IP from 192.168.6.0/24
+
+VLAN70 (192.168.7.0/24) → assigned IP from 192.168.7.0/24
+
+VLAN80 (192.168.8.0/24) → assigned IP from 192.168.8.0/24
+
+Verification command on Router1
+
+show ip dhcp binding → shows all leased IPs
+
+Conclusion: DHCP pools are functioning correctly; devices receive proper IP, gateway, and DNS.
+
+3. OSPF Routing Verification
+
+Objective: Ensure optimized routing between routers and networks.
+
+Tests performed:
+
+Show OSPF neighbors
+
+Command: show ip ospf neighbor
+
+Expected: All directly connected routers show FULL state
+
+Show OSPF routes
+
+Command: show ip route ospf
+
+Expected: Routes for all subnets (VLAN60-80, VLAN10-50) present
+
+Traceroute across floors
+
+Example: traceroute PC0 → PC7
+
+Confirms traffic takes the correct OSPF-learned path
+
+Conclusion: OSPF is properly exchanging routes and path selection is optimized.
+
+4. SSH & Security Verification
+
+Objective: Verify secure remote access to routers.
+
+Tests performed:
+
+Attempt SSH login:
+
+ssh abhi@Router1
+
+Enter password cisco123
+
+Expected result: Successful login
+
+Attempt Telnet login:
+
+telnet Router1
+
+Expected result: Connection refused (SSH only)
+
+Verify show running-config contains:
+
+ip ssh version 2
+
+line vty 0 4 with transport input ssh and login local
+
+Conclusion: SSH is enforced; local user authentication is working correctly.
+
+5. Access Point & Wireless Verification
+
+Objective: Ensure wireless devices can connect to correct VLANs.
+
+Tests performed:
+
+Laptop0 & Laptop2 (floor-3) connect to VLAN10 access point
+
+ipconfig /all → DHCP IP from 192.168.1.0/24
+
+Ping gateway 192.168.1.1 → Success
+
+Smartphone0 & Smartphone2 (floor-1 & floor-2) connect to respective access points
+
+Ping other devices in the same VLAN → Success
+
+Conclusion: Wireless connectivity and VLAN segregation are verified.
+
+6. End-to-End Connectivity Verification
+
+Objective: Verify full network functionality across all VLANs and floors.
+
+Tests performed:
+
+Ping from any floor to any floor across VLANs
+
+Example: PC1 (VLAN20, floor-3) ↔ PC4 (VLAN50, floor-2) → Success
+
+Traceroute to confirm traffic is routed through Router1 and OSPF paths
+
+Ping printers from PCs to verify networked printing across VLANs
+
+Conclusion: Full end-to-end connectivity is achieved; routing, DHCP, and VLAN configurations are correct.
 
 
 
