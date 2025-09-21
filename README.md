@@ -243,12 +243,52 @@ crypto key generate rsa
 ip ssh version 2
 line vty 0 4
  transport input ssh
- login local
+ login local<br>
+ Router Two Output:
+ <br>
+Switch2 Configuration
+hostname Switch2
+!
+vlan 30
+ name Reception
+vlan 40
+ name Pharmacy
+vlan 50
+ name Nursing
+!
+interface fa0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 1,30,40,50
+!
+interface fa0/2
+ switchport mode access
+ switchport access vlan 30
+!
+interface fa0/3
+ switchport mode access
+ switchport access vlan 30
+!
+interface fa0/4
+ switchport mode access
+ switchport access vlan 40
+!
+interface fa0/5
+ switchport mode access
+ switchport access vlan 40
+!
+interface fa0/6
+ switchport mode access
+ switchport access vlan 50
+!
+interface fa0/7
+ switchport mode access
+ switchport access vlan 50
+!
+interface fa0/8
+ switchport mode access
+ switchport access vlan 50<br>
 
-
-
-
-
+ Switch Two Output:
 
 
 
