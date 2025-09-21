@@ -153,6 +153,10 @@ interface fa0/8<br>
 # Second-Floor  <br>
 
 
+Router1 Configuration<br>
+
+
+
 
 
 
