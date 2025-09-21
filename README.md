@@ -104,6 +104,8 @@ line vty 0 4<br>
  transport input ssh<br>
  login local<br>
 
+ Router One Output:<img width="975" height="681" alt="Image" src="https://github.com/user-attachments/assets/c20f467c-935b-476b-aed4-acb23a702fd8" />
+
  <br>
  Switch1 Configuration<br>
  hostname Switch1<br>
@@ -147,6 +149,7 @@ interface fa0/8<br>
  switchport mode access<br>
  switchport access vlan 60<br>
 <br>
+
 # Second-Floor  <br>
 
 
