@@ -439,8 +439,8 @@ Verification command on Router1
 
 show ip dhcp binding → shows all leased IPs
 
-Conclusion: DHCP pools are functioning correctly; devices receive proper IP, gateway, and DNS.
-
+Conclusion: <br>
+<img width="1855" height="787" alt="Image" src="https://github.com/user-attachments/assets/ba4b4b07-6a13-428d-ba0f-b8e4ceed3405" />
 3. OSPF Routing Verification
 
 Objective: Ensure optimized routing between routers and networks.
