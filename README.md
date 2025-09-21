@@ -364,6 +364,39 @@ line vty 0 4
  login local
 
 <br>
+Router Three Output:<img width="972" height="585" alt="Image" src="https://github.com/user-attachments/assets/59117426-dc5d-4244-8e34-8f4e2e9cffd0" />
+<br>
+Switch 3 Configuration 
+
+hostname Switch3
+!
+vlan 10
+ name Admin
+vlan 20
+ name Doctors
+!
+interface fa0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 1,10,20
+!
+interface fa0/2
+ switchport mode access
+ switchport access vlan 10
+!
+interface fa0/3
+ switchport mode access
+ switchport access vlan 10
+!
+interface fa0/4
+ switchport mode access
+ switchport access vlan 20
+!
+interface fa0/5
+ switchport mode access
+ switchport access vlan 20
+ <br>
+ 
+
 
 
 
