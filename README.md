@@ -149,11 +149,103 @@ interface fa0/8<br>
  switchport mode access<br>
  switchport access vlan 60<br>
 <br>
+Switch One Output:
 
 # Second-Floor  <br>
+<img width="769" height="358" alt="Image" src="https://github.com/user-attachments/assets/a006d27f-cff2-444a-bbd1-fb99145bf087" />
 
 
-Router1 Configuration<br>
+Router2 Configuration<br>
+
+Devices Used:
+
+End Devices:
+
+3 PCs (PC2, PC3, PC4)
+
+3 Printers (Printer2, Printer3, Printer4)
+
+1 Laptop (Laptop1)
+
+1 Smartphone (Smartphone0)
+
+Networking Devices:
+
+1 Switch (2960-24TT)
+
+1 Access Point (Access Point5)
+
+Router (Gig0/0 interface connected to switch)
+
+VLANs Configured:
+
+VLAN 30 → 192.168.3.0/24 (PC2 + Printer2)
+
+VLAN 40 → 192.168.4.0/24 (PC3 + Printer3)
+
+VLAN 50 → 192.168.5.0/24 (PC4 + Printer4)
+
+Connections:
+
+PCs and Printers connected to switch (Fa0/3–Fa0/7).
+
+Access Point provides WiFi for Laptop1 and Smartphone0.
+
+Router provides DHCP, Inter-VLAN routing, and OSPF.
+# Complete Configuration  <br>
+hostname Router2
+!
+ip dhcp pool VLAN30
+ network 192.168.3.0 255.255.255.0
+ default-router 192.168.3.1
+ dns-server 8.8.8.8
+!
+ip dhcp pool VLAN40
+ network 192.168.4.0 255.255.255.0
+ default-router 192.168.4.1
+ dns-server 8.8.8.8
+!
+ip dhcp pool VLAN50
+ network 192.168.5.0 255.255.255.0
+ default-router 192.168.5.1
+ dns-server 8.8.8.8
+!
+interface g0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.3.1 255.255.255.0
+!
+interface g0/0.40
+ encapsulation dot1Q 40
+ ip address 192.168.4.1 255.255.255.0
+!
+interface g0/0.50
+ encapsulation dot1Q 50
+ ip address 192.168.5.1 255.255.255.0
+!
+interface s0/3/0
+ ip address 10.10.10.5 255.255.255.252
+ no shutdown
+!
+interface s0/3/1
+ ip address 10.10.10.9 255.255.255.252
+ no shutdown
+!
+router ospf 10
+ network 192.168.3.0 0.0.0.255 area 0
+ network 192.168.4.0 0.0.0.255 area 0
+ network 192.168.5.0 0.0.0.255 area 0
+ network 10.10.10.4 0.0.0.3 area 0
+ network 10.10.10.8 0.0.0.3 area 0
+!
+username chetan secret cisco123
+ip domain-name hospital.local
+crypto key generate rsa
+ip ssh version 2
+line vty 0 4
+ transport input ssh
+ login local
+
+
 
 
 
