@@ -149,7 +149,7 @@ interface fa0/8<br>
  switchport mode access<br>
  switchport access vlan 60<br>
 <br>
-Switch One Output:
+Switch One Output:<img width="908" height="565" alt="Image" src="https://github.com/user-attachments/assets/c5fefc30-0d9b-4842-a95d-3d31da96198f" />
 
 # Second-Floor  <br>
 <img width="769" height="358" alt="Image" src="https://github.com/user-attachments/assets/a006d27f-cff2-444a-bbd1-fb99145bf087" />
