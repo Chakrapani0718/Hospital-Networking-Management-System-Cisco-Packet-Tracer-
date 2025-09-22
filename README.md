@@ -496,6 +496,8 @@ ip ssh version 2
 line vty 0 4 with transport input ssh and login local
 
 Conclusion: SSH is enforced; local user authentication is working correctly.
+<br>
+<img width="822" height="699" alt="Image" src="https://github.com/user-attachments/assets/f05e0d09-fbf6-4f5b-8aa1-6f997498f849" />
 
 5. Access Point & Wireless Verification
 
