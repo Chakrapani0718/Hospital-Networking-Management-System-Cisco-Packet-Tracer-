@@ -191,105 +191,105 @@ Access Point provides WiFi for Laptop1 and Smartphone0.
 
 Router provides DHCP, Inter-VLAN routing, and OSPF.
 # Complete Configuration  <br>
-hostname Router2
-!
-ip dhcp pool VLAN30
- network 192.168.3.0 255.255.255.0
- default-router 192.168.3.1
- dns-server 8.8.8.8
-!
-ip dhcp pool VLAN40
- network 192.168.4.0 255.255.255.0
- default-router 192.168.4.1
- dns-server 8.8.8.8
-!
-ip dhcp pool VLAN50
- network 192.168.5.0 255.255.255.0
- default-router 192.168.5.1
- dns-server 8.8.8.8
-!
-interface g0/0.30
- encapsulation dot1Q 30
- ip address 192.168.3.1 255.255.255.0
-!
-interface g0/0.40
- encapsulation dot1Q 40
- ip address 192.168.4.1 255.255.255.0
-!
-interface g0/0.50
- encapsulation dot1Q 50
- ip address 192.168.5.1 255.255.255.0
-!
-interface s0/3/0
- ip address 10.10.10.5 255.255.255.252
- no shutdown
-!
-interface s0/3/1
- ip address 10.10.10.9 255.255.255.252
- no shutdown
-!
-router ospf 10
- network 192.168.3.0 0.0.0.255 area 0
- network 192.168.4.0 0.0.0.255 area 0
- network 192.168.5.0 0.0.0.255 area 0
- network 10.10.10.4 0.0.0.3 area 0
- network 10.10.10.8 0.0.0.3 area 0
-!
-username chetan secret cisco123
-ip domain-name hospital.local
-crypto key generate rsa
-ip ssh version 2
-line vty 0 4
- transport input ssh
+hostname Router2<br>
+!<br>
+ip dhcp pool VLAN30<br>
+ network 192.168.3.0 255.255.255.0<br>
+ default-router 192.168.3.1<br>
+ dns-server 192.168.3.2<br>
+!<br>
+ip dhcp pool VLAN40<br>
+ network 192.168.4.0 255.255.255.0<br>
+ default-router 192.168.4.1<br>
+ dns-server 192.168.4.2<br>
+!<br>
+ip dhcp pool VLAN50<br>
+ network 192.168.5.0 255.255.255.0<br>
+ default-router 192.168.5.1<br>
+ dns-server 192.168.5.2<br>
+!<br>
+interface g0/0.30<br>
+ encapsulation dot1Q 30<br>
+ ip address 192.168.3.1 255.255.255.0<br>
+!<br>
+interface g0/0.40<br>
+ encapsulation dot1Q 40<br>
+ ip address 192.168.4.1 255.255.255.0<br>
+!<br>
+interface g0/0.50<br>
+ encapsulation dot1Q 50<br>
+ ip address 192.168.5.1 255.255.255.0<br>
+!<br>
+interface s0/3/0<br>
+ ip address 10.10.10.5 255.255.255.252<br>
+ no shutdown<br>
+!<br>
+interface s0/3/1<br>
+ ip address 10.10.10.9 255.255.255.252<br>
+ no shutdown<br>
+!<br>
+router ospf 10<br>
+ network 192.168.3.0 0.0.0.255 area 0<br>
+ network 192.168.4.0 0.0.0.255 area 0<br>
+ network 192.168.5.0 0.0.0.255 area 0<br>
+ network 10.10.10.4 0.0.0.3 area 0<br>
+ network 10.10.10.8 0.0.0.3 area 0<br>
+!<br>
+username chetan secret cisco123<br>
+ip domain-name hospital.local<br>
+crypto key generate rsa<br>
+ip ssh version 2<br>
+line vty 0 4<br>
+ transport input ssh<br>
  login local<br>
  Router Two Output:<img width="988" height="614" alt="Image" src="https://github.com/user-attachments/assets/ec4b84ad-2b26-40ac-9bff-5a435e6b8489" />
  <br>
-Switch2 Configuration
-hostname Switch2
-!
-vlan 30
- name Reception
-vlan 40
- name Pharmacy
-vlan 50
- name Nursing
-!
-interface fa0/1
- switchport mode trunk
- switchport trunk allowed vlan 1,30,40,50
-!
-interface fa0/2
- switchport mode access
- switchport access vlan 30
-!
-interface fa0/3
- switchport mode access
- switchport access vlan 30
-!
-interface fa0/4
- switchport mode access
- switchport access vlan 40
-!
-interface fa0/5
- switchport mode access
- switchport access vlan 40
-!
-interface fa0/6
- switchport mode access
- switchport access vlan 50
-!
-interface fa0/7
- switchport mode access
- switchport access vlan 50
-!
-interface fa0/8
- switchport mode access
+Switch2 Configuration<br>
+hostname Switch2<br>
+!<br>
+vlan 30<br>
+ name Reception<br>
+vlan 40<br>
+ name Pharmacy<br>
+vlan 50<br>
+ name Nursing<br>
+!<br>
+interface fa0/1<br>
+ switchport mode trunk<br>
+ switchport trunk allowed vlan 1,30,40,50<br>
+!<br>
+interface fa0/2<br>
+ switchport mode access<br>
+ switchport access vlan 30<br>
+!<br>
+interface fa0/3<br>
+ switchport mode access<br>
+ switchport access vlan 30<br>
+!<br>
+interface fa0/4<br>
+ switchport mode access<br>
+ switchport access vlan 40<br>
+!<br>
+interface fa0/5<br>
+ switchport mode access<br>
+ switchport access vlan 40<br>
+!<br>
+interface fa0/6<br>
+ switchport mode access<br>
+ switchport access vlan 50<br>
+!<br>
+interface fa0/7<br>
+ switchport mode access<br>
+ switchport access vlan 50<br>
+!<br>
+interface fa0/8<br>
+ switchport mode access<br>
  switchport access vlan 50<br>
 
- Switch Two Output:<img width="891" height="595" alt="Image" src="https://github.com/user-attachments/assets/3e7c8835-3ffb-4dde-96ca-136cfd0c5ba0" />
+ Switch Two Output:<img width="891" height="595" alt="Image" src="https://github.com/user-attachments/assets/3e7c8835-3ffb-4dde-96ca-136cfd0c5ba0" /><br>
 
 # Third-Floor  <br>
-<img width="799" height="308" alt="Image" src="https://github.com/user-attachments/assets/3533bff2-3684-4ef0-a492-1ee0b5dde528" />
+<img width="799" height="308" alt="Image" src="https://github.com/user-attachments/assets/3533bff2-3684-4ef0-a492-1ee0b5dde528" /><br>
 
 <br>
 # Devices Used:
@@ -318,85 +318,85 @@ VLAN 10 → 192.168.1.0/24 (PC0 + Printer0)
 VLAN 20 → 192.168.2.0/24 (PC1 + Printer1)
 
 # Complete Configuration  <br>
-Router 3 Configuration
+Router 3 Configuration<br>
 
-hostname Router3
-!
-ip dhcp pool VLAN10
- network 192.168.1.0 255.255.255.0
- default-router 192.168.1.1
- dns-server 8.8.8.8
-!
-ip dhcp pool VLAN20
- network 192.168.2.0 255.255.255.0
- default-router 192.168.2.1
- dns-server 8.8.8.8
-!
-interface g0/0.10
- encapsulation dot1Q 10
- ip address 192.168.1.1 255.255.255.0
-!
-interface g0/0.20
- encapsulation dot1Q 20
- ip address 192.168.2.1 255.255.255.0
-!
-interface s0/3/0
- ip address 10.10.10.2 255.255.255.252
- clock rate 64000
- no shutdown
-!
-interface s0/3/1
- ip address 10.10.10.6 255.255.255.252
- no shutdown
-!
-router ospf 10
- network 192.168.1.0 0.0.0.255 area 0
- network 192.168.2.0 0.0.0.255 area 0
- network 10.10.10.0 0.0.0.3 area 0
- network 10.10.10.4 0.0.0.3 area 0
-!
-username mani secret cisco123
-ip domain-name hospital.local
-crypto key generate rsa
-ip ssh version 2
-line vty 0 4
- transport input ssh
- login local
+hostname Router3<br>
+!<br>
+ip dhcp pool VLAN10<br>
+ network 192.168.1.0 255.255.255.0<br>
+ default-router 192.168.1.1<br>
+ dns-server 192.168.1.2<br>
+!<br>
+ip dhcp pool VLAN20<br>
+ network 192.168.2.0 255.255.255.0<br>
+ default-router 192.168.2.1<br>
+ dns-server 192.168.2.2<br>
+!<br>
+interface g0/0.10<br>
+ encapsulation dot1Q 10<br>
+ ip address 192.168.1.1 255.255.255.0<br>
+!<br>
+interface g0/0.20<br>
+ encapsulation dot1Q 20<br>
+ ip address 192.168.2.1 255.255.255.0<br>
+!<br>
+interface s0/3/0<br>
+ ip address 10.10.10.2 255.255.255.252<br>
+ clock rate 64000<br>
+ no shutdown<br>
+!<br>
+interface s0/3/1<br>
+ ip address 10.10.10.6 255.255.255.252<br>
+ no shutdown<br>
+!<br>
+router ospf 10<br>
+ network 192.168.1.0 0.0.0.255 area 0<br>
+ network 192.168.2.0 0.0.0.255 area 0<br>
+ network 10.10.10.0 0.0.0.3 area 0<br>
+ network 10.10.10.4 0.0.0.3 area 0<br>
+!<br>
+username mani secret cisco123<br>
+ip domain-name hospital.local<br>
+crypto key generate rsa<br>
+ip ssh version 2<br>
+line vty 0 4<br>
+ transport input ssh<br>
+ login local<br>
 
 <br>
 Router Three Output:<img width="972" height="585" alt="Image" src="https://github.com/user-attachments/assets/59117426-dc5d-4244-8e34-8f4e2e9cffd0" />
 <br>
-Switch 3 Configuration 
+Switch 3 Configuration <br>
 
-hostname Switch3
-!
-vlan 10
- name Admin
-vlan 20
- name Doctors
-!
-interface fa0/1
- switchport mode trunk
- switchport trunk allowed vlan 1,10,20
-!
-interface fa0/2
- switchport mode access
- switchport access vlan 10
-!
-interface fa0/3
- switchport mode access
- switchport access vlan 10
-!
-interface fa0/4
- switchport mode access
- switchport access vlan 20
-!
-interface fa0/5
- switchport mode access
- switchport access vlan 20
+hostname Switch3<br>
+!<br>
+vlan 10<br>
+ name Admin<br>
+vlan 20<br>
+ name Doctors<br>
+!<br>
+interface fa0/1<br>
+ switchport mode trunk<br>
+ switchport trunk allowed vlan 1,10,20<br>
+!<br>
+interface fa0/2<br>
+ switchport mode access<br>
+ switchport access vlan 10<br>
+!<br>
+interface fa0/3<br>
+ switchport mode access<br>
+ switchport access vlan 10<br>
+!<br>
+interface fa0/4<br>
+ switchport mode access<br>
+ switchport access vlan 20<br>
+!<br>
+interface fa0/5<br>
+ switchport mode access<br>
+ switchport access vlan 20<br>
  <br>
 
- Switch Three Output:<img width="908" height="565" alt="Image" src="https://github.com/user-attachments/assets/e1efd5c8-0c0a-4d2f-b763-39c74dcfb775" />
+ Switch Three Output:<img width="908" height="565" alt="Image" src="https://github.com/user-attachments/assets/e1efd5c8-0c0a-4d2f-b763-39c74dcfb775" /><br>
  
 Testing & Verification
 1. Inter-VLAN Connectivity Verification
@@ -534,7 +534,8 @@ Traceroute to confirm traffic is routed through Router1 and OSPF paths
 Ping printers from PCs to verify networked printing across VLANs
 
 Conclusion: Full end-to-end connectivity is achieved; routing, DHCP, and VLAN configurations are correct.
-
+<br>
+<img width="1794" height="646" alt="Image" src="https://github.com/user-attachments/assets/355c3d97-bea6-43a9-b79d-62ee2a56c9d0" />
 
 
 
