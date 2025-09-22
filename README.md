@@ -466,6 +466,8 @@ Example: traceroute PC0 → PC7
 Confirms traffic takes the correct OSPF-learned path
 
 Conclusion: OSPF is properly exchanging routes and path selection is optimized.
+<br>
+<img width="1896" height="825" alt="Image" src="https://github.com/user-attachments/assets/43dee9bc-dcba-4f6c-a7ac-fe24e9326efb" />
 
 4. SSH & Security Verification
 
