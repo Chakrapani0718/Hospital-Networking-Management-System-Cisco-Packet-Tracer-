@@ -516,6 +516,8 @@ Smartphone0 & Smartphone2 (floor-1 & floor-2) connect to respective access point
 Ping other devices in the same VLAN → Success
 
 Conclusion: Wireless connectivity and VLAN segregation are verified.
+<br>
+<img width="1367" height="611" alt="Image" src="https://github.com/user-attachments/assets/a188b297-9a12-46bc-8690-dab01a92d3ce" />
 
 6. End-to-End Connectivity Verification
 
